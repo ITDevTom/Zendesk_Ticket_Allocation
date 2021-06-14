@@ -8,16 +8,12 @@ import random
 user = 'user@domain.com/token'
 pwd = ''
 
-
-
 # List of active agents
-
 agents = ['AgentOneReference', 'AgentTwoReference', 'AgentThreeReference', 'AgentFourReference']
 
 url = 'https://{{Domain}}.zendesk.com/api/v2/search.json?query=type%3Aticket+status%3Anew'
 
 # 1. Finding "new" tickets on the service desk.
-
 response = requests.get(url, auth=(user, pwd))
 
 # Check for HTTP codes other than 200
@@ -28,7 +24,6 @@ if response.status_code != 200:
 data = response.json()
 
 # 2. Update the found ticket, by changing the assignee ID (agent) from NULL to an agent.
-
 tickets = data['results']
 if (len(tickets) != 0):  # check if there is actual 'New' tickets in array
     for ticket in tickets:
